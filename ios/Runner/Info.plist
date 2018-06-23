@@ -28,6 +28,8 @@
 	<string>Main</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Using location to display on a map</string>
+	 <key>NSLocationAlwaysUsageDescription</key>
+    <string>Using location to display on a map</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

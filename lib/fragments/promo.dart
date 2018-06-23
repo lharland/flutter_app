@@ -4,7 +4,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/category.dart';
+import 'package:flutter_app/models/category.dart';
+import 'package:flutter_app/promo_data.dart';
 
 final _backgroundColor = Colors.grey[100];
 
@@ -15,8 +16,8 @@ final _backgroundColor = Colors.grey[100];
 ///
 /// While it is named CategoryRoute, a more apt name would be CategoryScreen,
 /// because it is responsible for the UI at the route's destination.
-class PromoFragment extends StatelessWidget {
-  const PromoFragment();
+class PromoFragment1 extends StatelessWidget {
+  const PromoFragment1();
 
 
   
@@ -43,23 +44,7 @@ class PromoFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categories = <Category>[];
-
-  
-      categories.add(Category(
-        name: '5% Off Ride Economy class',
-        dateStart: '4/5/2018',
-        dateEnd: '5/5/2017',
-        iconLocation: Icons.cake,
-      ));
-
-
-      categories.add(Category(
-        name: '214',
-        dateStart: '4/5/2018',
-        dateEnd: '5/5/2017',
-        iconLocation: Icons.cake,
-      ));
+    
   
 
     final listView = Container(
@@ -70,19 +55,12 @@ class PromoFragment extends StatelessWidget {
 
     final appBar = AppBar(
       elevation: 0.0,
-      title: Text(
-        'Unit Converter',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 30.0,
-        ),
-      ),
+
       centerTitle: true,
       backgroundColor: _backgroundColor,
     );
 
     return Scaffold(
-      appBar: appBar,
       body: listView,
     );
   }

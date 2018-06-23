@@ -1,6 +1,12 @@
 import 'package:flutter_app/fragments/booking.dart';
+import 'package:flutter_app/fragments/notification.dart';
+import 'package:flutter_app/fragments/payment.dart';
 import 'package:flutter_app/fragments/promo.dart';
+import 'package:flutter_app/fragments/helpcenter.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_app/fragments/promo_category.dart';
+import 'package:flutter_app/fragments/startrequest.dart';
 
 class DrawerItem {
   String title;
@@ -28,15 +34,20 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   int _selectedDrawerIndex = 0;
 
-  _getDrawerItemWidget(int pos) {
+  _getDrawerItemWidget(int pos, BuildContext context) {
     switch (pos) {
       case 0:
-        return new BookingFragment();
-
+        return new BookingScreen();
+      case 1:
+        return new NotificationFragment();
+      case 2:
+        return new PaymentFragment();
       case 3:
-      return new PromoFragment();
+        return new PromoFragment1();
+      case 4:
+        return new HelpCenter();
       default:
-        return new Text("Error");
+        return new StartRequestScreen();
     }
   }
 
@@ -50,18 +61,17 @@ class HomePageState extends State<HomePage> {
     var drawerOptions = <Widget>[];
     for (var i = 0; i < widget.drawerItems.length; i++) {
       var d = widget.drawerItems[i];
-      drawerOptions.add(
-          new ListTile(
-            leading: new Icon(d.icon),
-            title: new Text(d.title),
-            selected: i == _selectedDrawerIndex,
-            onTap: () => _onSelectItem(i),
-          )
-      );
+      drawerOptions.add(new ListTile(
+        leading: new Icon(d.icon),
+        title: new Text(d.title),
+        selected: i == _selectedDrawerIndex,
+        onTap: () => _onSelectItem(i),
+      ));
     }
 
     return new Scaffold(
       appBar: new AppBar(
+        elevation: 0.0,
         // here we display the title corresponding to the fragment
         // you can instead choose to have a static title
         title: new Text(widget.drawerItems[_selectedDrawerIndex].title),
@@ -75,7 +85,7 @@ class HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      body: _getDrawerItemWidget(_selectedDrawerIndex),
+      body: _getDrawerItemWidget(_selectedDrawerIndex, context),
     );
   }
 }
